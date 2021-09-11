@@ -21,7 +21,7 @@ class Mood(models.Model):
         default=1,
         validators=[
             MaxValueValidator(100),
-            MinValueValidator(1)
+            MinValueValidator(0)
         ]
     )
     class RecommendationChoices(models.TextChoices):
