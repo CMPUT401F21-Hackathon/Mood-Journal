@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>New Mood</h2>
+    </form><!DOCTYPE html>
+    <html>
+    <head>
+      <title>New Mood</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+      <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    
+    <div class="jumbotron text-center ">
+        <h2 class="display-4">NEW MOOD</h2>
+    </div>
+    
+    <div class="container">
     <form method="POST" class="post-form">{% csrf_token %}
-        <p>Score:</p>
+        <p class="font-weight-bold text-secondary">Score:</p>
         {% if score_slider %}
         <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" value={{score_slider}} id="score_slider">
         <output>{{score_slider}}</output>
@@ -14,6 +31,17 @@
         </p>
         {% endif %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+    </div>
+     
+    <div class="container">
+        <input type="submit" class="btn btn-info" value="Save"> 
+    </div>
+    
+    </body>
+    </html>
+
 {% endblock %}
+
+
+
+
