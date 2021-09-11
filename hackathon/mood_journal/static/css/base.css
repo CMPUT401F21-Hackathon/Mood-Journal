@@ -6,7 +6,10 @@ h1 {
     color: red;
 }
 
-.mood {
-  border: 2px solid black;
+.mood-box {
+  border: 1px solid grey;
+  background-image: linear-gradient(to right, white, rgba(250, 248, 132));
   margin: 5px;
+  padding: 5px;
+  border-radius: 6px;
 }

@@ -15,7 +15,7 @@ def home(request):
     labels = []
     data = []
     for mood in moods_r:
-        labels.append(mood.timestamp.strftime("%m/%d/%Y, %H:%M:%S"))
+        labels.append(mood.timestamp.strftime("%m/%d, %H:%M"))
         data.append(mood.score)
     context = {
         'moods': moods,
