@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>New Mood</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        <p>Score:</p>
+        <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" id="score-slider">
+        <output>50</output>
+        </p>
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

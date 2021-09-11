@@ -15,13 +15,14 @@ class Profile(models.Model):
 
 class Mood(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    status = models.CharField(max_length=200, blank=True, help_text="Tell me how you are feeling!")
     timestamp = models.DateTimeField(default=timezone.now)
     # 0-49: Sad; 50: Neutral; 51-100: Happy
     score = models.IntegerField(
         default=1,
         validators=[
             MaxValueValidator(100),
-            MinValueValidator(1)
+            MinValueValidator(0)
         ]
     )
     class RecommendationChoices(models.TextChoices):
@@ -34,5 +35,7 @@ class Mood(models.Model):
         choices=RecommendationChoices.choices,
         default=RecommendationChoices.MUSIC
     )
+
+    link = models.TextField(max_length=200, blank=True)
 
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
