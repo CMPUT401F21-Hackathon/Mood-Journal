@@ -8,7 +8,16 @@
 {% if user.is_authenticated %}
   <img src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="130" height="130"/>
   <h1>Hi {{ user.username }}!</h1>
-   <a href="{% url 'mood_journal:mood_new' %}">New Mood</a>
+  <a href="{% url 'mood_journal:mood_new' %}">New Mood</a>
+
+  <div id="moods">
+    {% for mood in moods %}
+    <p>Mood ID: {{mood.id}}</p>
+    <p>Score: {{mood.score}}</p>
+    {% endfor %}
+  </div>
+
+  <br></br>
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>
