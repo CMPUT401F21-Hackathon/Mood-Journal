@@ -2,8 +2,9 @@ from .models import Mood
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import MoodForm
 from .models import Mood, Profile
-from .recomendations import music
+from .recomendations import music, movie, recipe
 import json
+import random
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def home(request):
     labels = []
     data = []
     for mood in moods_r:
-        labels.append(mood.timestamp.strftime("%m/%d/%Y, %H:%M:%S"))
+        labels.append(mood.timestamp.strftime("%m/%d, %H:%M"))
         data.append(mood.score)
     context = {
         'moods': moods,
@@ -29,7 +30,12 @@ def mood_new(request):
         if form.is_valid:
             mood = form.save(commit=False)
             mood.score = request.POST.get('range')
-            mood.link = music["Never Gonna Give You Up"]
+            if mood.recommendation == "Music":
+                mood.link_title, mood.link = random.choice(list(music.items()))
+            elif mood.recommendation == "Movie":
+                mood.link_title, mood.link = random.choice(list(movie.items()))
+            else: 
+                mood.link_title, mood.link = random.choice(list(recipe.items()))
             mood.user = request.user.profile
             mood.save()
             return redirect("mood_journal:home")
