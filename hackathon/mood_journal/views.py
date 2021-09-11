@@ -1,6 +1,7 @@
 from .models import Mood
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import MoodForm
+from .recomendations import music
 
 # Create your views here.
 
@@ -12,6 +13,8 @@ def mood_new(request):
         form = MoodForm(request.POST)
         if form.is_valid:
             mood = form.save(commit=False)
+            mood.score = request.POST.get('range')
+            mood.link = music["Never Gonna Give You Up"]
             mood.user = request.user.profile
             mood.save()
             return redirect("mood_journal:home")
