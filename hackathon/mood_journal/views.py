@@ -3,13 +3,25 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import MoodForm
 from .models import Mood, Profile
 from .recomendations import music
+import json
 
 # Create your views here.
 
 def home(request):
     current_profile = request.user.profile
     moods = Mood.objects.filter(user=current_profile).order_by('-timestamp')
-    return render(request, 'mood_journal/home.html', {'moods':moods})
+    moods_r = Mood.objects.filter(user=current_profile).order_by('timestamp')
+    labels = []
+    data = []
+    for mood in moods_r:
+        labels.append(mood.timestamp.strftime("%m/%d/%Y, %H:%M:%S"))
+        data.append(mood.score)
+    context = {
+        'moods': moods,
+        'labels': labels,
+        'data': data,
+    }
+    return render(request, 'mood_journal/home.html', context)
 
 def mood_new(request):
     if request.method == "POST":
