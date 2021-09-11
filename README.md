@@ -1,6 +1,9 @@
 # Mood Journal
 Mood Journal &amp; Vibes
 
+[[https://github.com/CMPUT401F21-Hackathon/Mood-Journal/blob/main/docs/front_page.PNG|alt=front_page]]
+
+
 # Instructions
 
 - Create your virtualenv, then `pip install -r requirements.txt` (or `pip3`)
