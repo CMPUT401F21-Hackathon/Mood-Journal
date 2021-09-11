@@ -10,6 +10,7 @@ h1 {
   border: 1px solid grey;
   background-image: linear-gradient(to right, white, rgba(250, 248, 132));
   margin: 5px;
+
 }
 
 #newMood {
@@ -96,3 +97,7 @@ h2 {
   /* padding: 5px;
   border-radius: 6px;
 } */
+/*   padding: 5px;
+  border-radius: 6px;
+}
+*/
