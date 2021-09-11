@@ -1,13 +1,18 @@
 # Mood Journal
 Mood Journal &amp; Vibes
 
-# Instruction
+# Instructions
 
 - Create your virtualenv, then `pip install -r requirements.txt` (or `pip3`)
 - `cd hackathon`
 - `python3 manage.py makemigrations` (or `python`)
 - `python3 manage.py migrate`
 - You will need a user to use the webpage
+- `python3 manage.py runserver`. 
+- Go to http://127.0.0.1:8000, if you can login with `JohnDoe/cmput401`, we are set to go.
+
+## Else (OR to create a new user/profile, skip the first step):
+
 - `python3 manage.py createsuperuser` => use `admin/admin` credentials.
 - `python3 manage.py runserver`
 - Now if you go to http://127.0.0.1:8000 it will said you need to log in. DONT LOGIN WITH ADMIN.
