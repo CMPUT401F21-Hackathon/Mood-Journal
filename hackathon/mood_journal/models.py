@@ -1,12 +1,14 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 import uuid
 
 # Create your models here.
 
-class User(models.Model):
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField(max_length=100, blank=True)
     bio = models.TextField(max_length=100, blank=True)
@@ -33,4 +35,4 @@ class Mood(models.Model):
         default=RecommendationChoices.MUSIC
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
