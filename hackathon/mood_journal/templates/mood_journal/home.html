@@ -12,8 +12,11 @@
 
   <div id="moods">
     {% for mood in moods %}
-    <p>Mood ID: {{mood.id}}</p>
-    <p>Score: {{mood.score}}</p>
+    <div class="mood">
+      <p>Date: {{mood.timestamp}}</p>
+      <p>Mood ID:<a href="/mood/{{mood.id}}/"> {{mood.id}}</a></p>
+      <p>Score: {{mood.score}}</p>
+    </div>
     {% endfor %}
   </div>
 

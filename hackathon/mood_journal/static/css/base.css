@@ -5,3 +5,8 @@ body {
 h1 {
     color: red;
 }
+
+.mood {
+  border: 2px solid black;
+  margin: 5px;
+}

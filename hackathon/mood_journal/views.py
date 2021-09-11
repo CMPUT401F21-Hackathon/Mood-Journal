@@ -31,11 +31,13 @@ def mood_edit(request, pk):
         form = MoodForm(request.POST, instance=mood)
         if form.is_valid():
             mood = form.save(commit=False)
+            mood.score = request.POST.get('range')
             mood.save()
             return redirect("mood_journal:home")
     else:
         form = MoodForm(instance=mood)
+        score_slider = mood.score
 
-    return render(request,'mood_journal/mood_edit.html', {'form': form})
+    return render(request,'mood_journal/mood_edit.html', {'form': form, 'score_slider': score_slider})
 
    

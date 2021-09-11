@@ -4,9 +4,15 @@
     <h2>New Mood</h2>
     <form method="POST" class="post-form">{% csrf_token %}
         <p>Score:</p>
-        <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" id="score-slider">
+        {% if score_slider %}
+        <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" value={{score_slider}} id="score_slider">
+        <output>{{score_slider}}</output>
+        </p>
+        {% else %}
+        <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" id="score_slider">
         <output>50</output>
         </p>
+        {% endif %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
