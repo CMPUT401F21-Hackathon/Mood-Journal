@@ -1,12 +1,15 @@
 from .models import Mood
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import MoodForm
+from .models import Mood, Profile
 from .recomendations import music
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'mood_journal/home.html')
+    current_profile = request.user.profile
+    moods = Mood.objects.filter(user=current_profile).order_by('-timestamp')
+    return render(request, 'mood_journal/home.html', {'moods':moods})
 
 def mood_new(request):
     if request.method == "POST":
