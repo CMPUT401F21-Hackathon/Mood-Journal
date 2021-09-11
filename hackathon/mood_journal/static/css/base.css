@@ -7,7 +7,7 @@ h1 {
 }
 
 .mood-box {
-  border: 1px solid grey;
+  border: 1.5px solid grey;
   background-image: linear-gradient(to right, white, rgba(250, 248, 132));
   margin: 5px;
   padding: 5px;
