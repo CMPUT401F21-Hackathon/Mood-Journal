@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mood_journal'
+    'mood_journal',
 ]
 
 MIDDLEWARE = [

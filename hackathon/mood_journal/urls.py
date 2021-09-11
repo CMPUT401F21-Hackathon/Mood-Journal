@@ -6,4 +6,5 @@ app_name = 'mood_journal'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('new/', views.mood_new, name='mood_new'),
 ]
