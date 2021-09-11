@@ -21,6 +21,55 @@
   {% endif %}
   
   <a href="{% url 'mood_journal:mood_new' %}">New Mood</a>
+
+  <div class="chart-area">
+    <canvas id="my-chart"></canvas>
+  </div>
+
+  <script language="JavaScript">
+    var config = {
+      type: 'line',
+      data: {
+        labels: {{ labels|safe }},
+        datasets: [{
+          label: "Happiness",
+          lineTension: 0.3,
+          backgroundColor: "rgba(78, 115, 223, 0.05)",
+          borderColor: "rgba(78, 115, 223, 1)",
+          pointRadius: 3,
+          pointBackgroundColor: "rgba(78, 115, 223, 1)",
+          pointBorderColor: "rgba(78, 115, 223, 1)",
+          pointHoverRadius: 3,
+          pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+          pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+          pointHitRadius: 10,
+          pointBorderWidth: 2,
+          data: {{ data|safe }}
+        }],
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById("my-chart").getContext('2d');
+      window.myChart = new Chart(ctx, config);
+    };
+  </script>
+
+  <div id="moods">
+    {% for mood in moods %}
+    <div class="mood">
+      <p>Date: {{mood.timestamp}}</p>
+      <p>Mood ID:<a href="/mood/{{mood.id}}/"> {{mood.id}}</a></p>
+      <p>Score: {{mood.score}}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <br></br>
+  
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>
