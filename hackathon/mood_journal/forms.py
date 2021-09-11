@@ -5,4 +5,4 @@ class MoodForm(forms.ModelForm):
     
     class Meta:
         model = Mood
-        fields = ('score', 'recommendation',)
+        fields = ['recommendation',]

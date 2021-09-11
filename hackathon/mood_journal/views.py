@@ -11,6 +11,7 @@ def mood_new(request):
         form = MoodForm(request.POST)
         if form.is_valid:
             mood = form.save(commit=False)
+            mood.score = request.POST.get('range')
             mood.user = request.user.profile
             mood.save()
             return redirect("mood_journal:home")
