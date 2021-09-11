@@ -28,7 +28,6 @@ def mood_edit(request, pk):
         form = MoodForm(request.POST, instance=mood)
         if form.is_valid():
             mood = form.save(commit=False)
-            mood.user = request.user.profile
             mood.save()
             return redirect("mood_journal:home")
     else:
