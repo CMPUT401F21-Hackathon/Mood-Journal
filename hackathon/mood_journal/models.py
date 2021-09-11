@@ -36,6 +36,7 @@ class Mood(models.Model):
         default=RecommendationChoices.MUSIC
     )
 
+    link_title = models.TextField(max_length=200, blank=True)
     link = models.TextField(max_length=200, blank=True)
 
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
