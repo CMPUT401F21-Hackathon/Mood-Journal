@@ -3,6 +3,7 @@ from .models import Mood
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import MoodForm
 from .recomendations import music
+from django.contrib import messages
 
 
 # Create your views here.
@@ -10,8 +11,25 @@ from .recomendations import music
 def home(request):
     return render(request, 'mood_journal/home.html')
 
-def edit_profile(request):
+'''
+def edit_profile(request):  
     return render(request, 'registration/edit_profile.html')
+'''
+
+from .forms import ProfileUpdateForm
+def edit_profile(request):
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        if p_form.is_valid():
+            p_form.save()
+            messages.success(request,'Your Profile has been updated!')
+            return redirect('mood_journal:home')
+    else:
+        p_form = ProfileUpdateForm(instance=request.user)
+
+    context={'p_form': p_form}
+
+    return render(request, 'registration/edit_profile.html',context)
 
 def mood_new(request):
     if request.method == "POST":
