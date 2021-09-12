@@ -44,8 +44,10 @@
           <h3><p><a href="{% url 'mood_journal:edit_profile' %}" class="btn btn-secondary">Edit Profile</a></p></h3>
         </div>
 
-        <div class="vibes div-title">
-        </div>
+        <h2 class="music-title">🎵 Today's music</h2>
+        
+        <div class="vibes-div-title">
+          <iframe src="{{video}}" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>        </div>
         
         {% comment %} <p>Lorem ipsum dolor sit ame.</p>
         <ul class="nav nav-pills flex-column">
