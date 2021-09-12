@@ -7,21 +7,39 @@ small {
   font-size: 20px;
 }
 .jumbotron h1 {
-    color: orange;
-    font-size: 80px;
+    color: CornflowerBlue;
+    font-size: 60px;
+    font-family: 'Lobster';
 }
 
 .jumbotron {
-  background-image: url(../img/bg3.jpeg);
+  background: linear-gradient(90deg, rgba(208,208,219,1) 1%, rgba(207,161,222,0.798739564185049) 44%, rgba(0,212,255,0.38137261740633754) 89%);
   background-size: cover;
   background-attachment: fixed;
   size: 60%;
-  height: 400px;
+  height: 300px;
+}
+
+.div-tile {
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .mood-box {
-  border: 1.5px solid grey;
   border-radius: 8px;
-  background-image: linear-gradient(to right, white, rgba(250, 248, 132));
+  background-color: rgba(255, 250, 240, 0.3);
+  border: 1px solid grey;
+  border-color: SandyBrown;
+  box-shadow: 0 0 5px SandyBrown;
 }
 
+.mood-box p {
+  margin: 0;
+  padding: 0;
+}
+
+hr{
+  padding-bottom: 3px;
+  margin: 0px;    
+}
