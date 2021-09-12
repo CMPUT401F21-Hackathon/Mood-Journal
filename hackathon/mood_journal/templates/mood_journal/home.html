@@ -10,6 +10,10 @@
   <div class="jumbotron text-center" style="margin-bottom:0">
     <small>Welcome to </small>
     <h1>Moodie</h1>
+    <hr class="colored hidden-xs hidden-height-670">
+    <h4>Track your mood and get anonymous support!</h4>
+
+    <a class="nav-link" href="{% url 'mood_journal:mood_new' %}"> ADD NEW MOOD</a>
     <!-- <p>Resize this responsive page to see the effect!</p>  -->
   </div>
 
@@ -30,12 +34,13 @@
   <div class="container" style="margin-top:30px">
     <div class="row">
       <div class="col-sm-4">
-        <h2>{{user.username}}</h2>
         <div class="profile-picture">
           <img src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="130" height="130"/>
         </div>
-        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        <h3>Some Links</h3>
+        <h2 class="username">{{user.username}}</h2>
+        <p class="aboutme">Some text about me in culpa qui officia deserunt mollit anim..</p>
+        <br>
+        <h3 class="link">Some Links</h3>
         <p>Lorem ipsum dolor sit ame.</p>
         <ul class="nav nav-pills flex-column">
           <li class="nav-item">
@@ -48,7 +53,7 @@
         <hr class="d-sm-none">
       </div>
       <div class="col-sm-8">
-        <h2>Graph</h2>
+        <h2 style="font-family: system-ui; ;">Current Mood Chart</h2>
         <div class="chart-area">
           <canvas id="my-chart"></canvas>
         </div>
@@ -57,7 +62,7 @@
         {% for mood in moods %}
         <div class="mood-box">
           <h2>Mood <a href="/mood/{{mood.id}}/">{{mood.id}}</a></h2>
-          <h5>Date: {{mood.timestamp}}</h5>
+          <p>Date: {{mood.timestamp}}</p>
           <p>Score: {{mood.score}}</p>
           <p>Recomendation: {{mood.recommendation}}</p>
           <p>Link: <a href={{mood.link}}>{{mood.link_title}}</a></p>
