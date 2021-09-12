@@ -76,3 +76,7 @@ h3 a:link {
 .chart-area {
   padding: 24px;
 }
+
+.action-button {
+  display: inline;
+}

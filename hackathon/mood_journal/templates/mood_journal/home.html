@@ -17,7 +17,7 @@
   </div>
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
-    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="{% url 'mood_journal:mood_new' %}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,10 +37,17 @@
           <div class="profile-picture">
             <img src="{% static 'img/generic_profile_picture.png' %}" alt="Profile Picture" width="130" height="130"/>
           </div>
-          <h2><b>{{user.username}}</b></h2>
+          {% if mood_latest.score >= 50 %}
+          <h2><b>{{user.username}} 😁</b></h2>
+          {% else %}
+          <h2><b>{{user.username}} 😞</b></h2>
+          {% endif %}
           <h5>{{user.profile.name}}</h5>
           <p><i>{{user.profile.bio}}</i></p>
-          <h3><p><a href="{% url 'mood_journal:edit_profile' %}" class="btn btn-secondary">Edit Profile</a></p></h3>
+          <div class="action-button">
+            <h3><a href="{% url 'mood_journal:edit_profile' %}" class="btn btn-info">Edit Profile</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a></h3>
+          </div>
         </div>
 
         <div class="vibes div-title">
@@ -66,15 +73,15 @@
 
 
         {% for mood in moods %}
-        {% if mood.score > 50 %}
-        <div class="mood-box div-tile mood-box-happy">
-          <!-- <h3><strong><a href="/mood/{{mood.id}}/">😁  {{mood.status}}</a></strong></h3> -->
-          <h3><strong>😁 {{mood.status}}   <a href="/mood/{{mood.id}}/" style="font-size: 15px;"> Edit Mood</a></strong></h3>
+        {% if mood.score >= 50 %}
+        <div class="mood-box div-tile mood-box-happy" onclick="location.href='/mood/{{mood.id}}/';" style="cursor: pointer;">
+          <h3><strong><a href="/mood/{{mood.id}}/">😁  {{mood.status}}</a></strong></h3>
+          <!-- <h3><strong>😁 {{mood.status}}   <a href="/mood/{{mood.id}}/" style="font-size: 15px;"> Edit Mood</a></strong></h3> -->
           
         {% else %}
-        <div class="mood-box div-tile mood-box-sad">
-          <h3><strong>😞 {{mood.status}}   <a href="/mood/{{mood.id}}/" style="font-size: 15px;"> Edit Mood</a></strong></h3>
-          <!-- <h3><strong><a href="/mood/{{mood.id}}/">😞  {{mood.status}}</a></strong></h3> -->
+        <div class="mood-box div-tile mood-box-sad" onclick="location.href='/mood/{{mood.id}}/';" style="cursor: pointer;">
+          <!-- <h3><strong>😞 {{mood.status}}   <a href="/mood/{{mood.id}}/" style="font-size: 15px;"> Edit Mood</a></strong></h3> -->
+          <h3><strong><a href="/mood/{{mood.id}}/">😞  {{mood.status}}</a></strong></h3>
         {% endif %}
           <small>Date: {{mood.timestamp}}</small>
           <p>Score: {{mood.score}}</p>
@@ -126,7 +133,7 @@
 
   <br></br>
   
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <!-- <p><a href="{% url 'logout' %}">Log Out</a></p> -->
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
