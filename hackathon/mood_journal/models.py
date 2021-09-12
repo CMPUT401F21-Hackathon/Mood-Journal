@@ -6,12 +6,18 @@ from django.contrib.auth.models import User
 import uuid
 
 # Create your models here.
+def upload_place_pics(instance, filename):
+        return "img/{user}/{filename}".format(user=instance.user, filename=filename)
+def default_place_pics():
+        return "img/generic_profile_picture.png"
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField(max_length=100, blank=True)
     bio = models.TextField(max_length=200, blank=True)
+    profile_pic = models.ImageField(default=default_place_pics, upload_to=upload_place_pics, null= True, blank = True)
 
 class Mood(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -40,3 +46,7 @@ class Mood(models.Model):
     link = models.TextField(max_length=200, blank=True)
 
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    
+
+    

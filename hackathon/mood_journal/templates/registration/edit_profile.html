@@ -8,6 +8,8 @@
 <body style="margin: 50px; background-color: lightgray;">
     {% extends 'home.html' %}
 
+    {% load static %}
+
     {% block title %}Edit Profile{% endblock %}
     
     {% block content %}
@@ -33,8 +35,9 @@
                   <div class="row">
                     <div class="col-12 col-sm-auto mb-3">
                       <div class="mx-auto" style="width: 140px;">
-                        <div class="d-flex justify-content-center align-items-center rounded" id = "image"style="height: 140px; background-color: rgb(233, 236, 239);">
-                          <span style="color: rgb(121, 163, 204); font: bold 8pt Arial;">140x140</span>
+                        <div class="profile-pic">
+                          <img src="{% static 'img/generic_profile_picture.png' %}" id="photo" width="140" height="140">
+                          <input class="d-none" type="file" id="file">
                         </div>
                       </div>
                     </div>
@@ -43,7 +46,7 @@
                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{profile.name}}</h4>
                         <p class="mb-0">@{{profile.user}}</p>
                         <div class="mt-2">
-                          <button class="btn btn-primary" type="button">
+                          <button class="btn btn-primary" id = "button" type="button">
                             <i class="fa fa-fw fa-camera"></i>
                             <span>Change Photo</span>
                           </button>
@@ -113,44 +116,31 @@
       
         function editPic(input){
       
-          const realImageFile = document.getElementById("id_real_image");
-      
-          const profileImage = document.getElementById("id_profile_image_display")
-          profileImage.style.opacity = "1"
-          profileImage.style.display = "block"
-          profileImage.style.width = "100%"
-          profileImage.style.height = "auto"
-          profileImage.style.transition = ".5s ease"
-          profileImage.style.backfaceVisibility  = "hidden"
-          profileImage.style.cursor = "pointer"
-      
-          const imageContainer = document.getElementById("id_image_container")
-          imageContainer.addEventListener("mouseover", function(event) { 
-            profileImage.style.opacity = "0.3"
-            middleContainer.style.opacity = "1"
-          })
-      
-          imageContainer.addEventListener("mouseout", function(event) { 
-            profileImage.style.opacity = "1"
-            middleContainer.style.opacity = "0"
-          })
-      
-          imageContainer.addEventListener("click", function(){
-            realImageFile.click();
+          const imgDiv = document.getElementById('profile-pic');
+          const img = document.getElementById('photo');
+          const file = document.getElementById('file');
+          const uploadBtn = document.getElementById('button');
+
+          uploadBtn.addEventListener("click", function(){
+            file.click();
           });
-      
-          realImageFile.addEventListener("change", function(){
+
+          file.addEventListener('change', function(){
+
           const choosedFile = this.files[0];
+
           if (choosedFile) {
-            const reader = new FileReader();
-            reader.addEventListener("load", function(){
-              profileImage.setAttribute("src", reader.result);
+
+            const reader = new FileReader(); 
+
+            reader.addEventListener('load', function(){
+                img.setAttribute('src', reader.result);
             });
+
             reader.readAsDataURL(choosedFile);
           }
-          });
-        }
-        
+        });
+      }
       </script>
     {% endblock %}
 

@@ -41,6 +41,7 @@ def edit_profile(request):
             p_form.save()
             current_profile.name = request.POST.get("name")
             current_profile.bio = request.POST.get("bio")
+            current_profile.profile_pic = request.POST.get("profile_pic")
             current_profile.save()
             messages.success(request,'Your Profile has been updated!')
             return redirect('mood_journal:home')
