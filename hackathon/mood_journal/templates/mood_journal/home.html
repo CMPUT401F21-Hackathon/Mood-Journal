@@ -5,6 +5,13 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<style type="text/css">
+  .image-container{
+    max-width: 250px;
+    height: auto;
+    position: relative;
+  }
+</style>
 {% if user.is_authenticated %}
 
   <div class="jumbotron text-center" style="margin-bottom:0">
@@ -30,9 +37,11 @@
     <div class="row">
       <div class="col-sm-4">
         <h2>{{user.username}}</h2>
-        <div class="profile-picture">
-          <img src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="130" height="130"/>
+        <div class = "profile-picture " id = "id_image_container">
+          <input class="d-none" type="file" id="id_real_image">
+          <img  id = "id_profile_image_display" src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="130" height="130"/>
         </div>
+
         <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
         <h3>Some Links</h3>
         <p>Lorem ipsum dolor sit ame.</p>
@@ -66,7 +75,8 @@
       </div>
     </div>
   </div>
-  
+
+
   <div class="jumbotron text-center" style="margin-bottom:0">
     <p>Footer</p>
   </div>
@@ -103,6 +113,67 @@
       window.myChart = new Chart(ctx, config);
     };
   </script>
+
+<script language="JavaScript">
+  
+  editPic()
+
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+            	disableImageOverlay()
+            	var image = e.target.result
+            	var imageField = document.getElementById('id_profile_image_display')
+                imageField.src = image
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+  function editPic(){
+
+    const realImageFile = document.getElementById("id_real_image");
+
+    const profileImage = document.getElementById("id_profile_image_display")
+    profileImage.style.opacity = "1"
+    profileImage.style.display = "block"
+    profileImage.style.width = "100%"
+    profileImage.style.height = "auto"
+    profileImage.style.transition = ".5s ease"
+    profileImage.style.backfaceVisibility  = "hidden"
+    profileImage.style.cursor = "pointer"
+
+    const imageContainer = document.getElementById("id_image_container")
+    imageContainer.addEventListener("mouseover", function(event) { 
+      profileImage.style.opacity = "0.3"
+      middleContainer.style.opacity = "1"
+    })
+
+    imageContainer.addEventListener("mouseout", function(event) { 
+      profileImage.style.opacity = "1"
+      middleContainer.style.opacity = "0"
+    })
+
+    imageContainer.addEventListener("click", function(){
+      realImageFile.click();
+    });
+
+    realImageFile.addEventListener("change", function(){
+      const choosedFile = this.files[0];
+      if (choosedFile) {
+        const reader = new FileReader();
+        reader.addEventListener("load", function(){
+          profileImage.setAttribute("src", reader.result);
+        });
+        reader.readAsDataURL(choosedFile);
+      }
+    });
+  }
+  
+</script>
 
   <br></br>
   <p><a href="{% url 'logout' %}">Log Out</a></p>
