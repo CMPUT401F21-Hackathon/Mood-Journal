@@ -81,3 +81,7 @@ h3 a:link {
 .action-button {
   display: inline;
 }
+
+.action-button a {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+}

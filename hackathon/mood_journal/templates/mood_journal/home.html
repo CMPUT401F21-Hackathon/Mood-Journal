@@ -40,30 +40,32 @@
           </div>
           {% if mood_latest.score >= 50 %}
           <h2><b>{{user.username}} 😁</b></h2>
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
+            aria-valuenow="{{mood_latest.score}}" aria-valuemin="0" aria-valuemax="100" style="width:{{mood_latest.score}}%">
+              Happy 
+            </div>
+          </div>
           {% else %}
           <h2><b>{{user.username}} 😞</b></h2>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar"
+            aria-valuenow="{{mood_latest.score}}" aria-valuemin="0" aria-valuemax="100" style="width:{{mood_latest.score}}%">
+              Sad 
+            </div>
+          </div>
           {% endif %}
           <h5>{{user.profile.name}}</h5>
           <p><i>{{user.profile.bio}}</i></p>
           <div class="action-button">
-            <h3><a href="{% url 'mood_journal:edit_profile' %}" class="btn btn-info">Edit Profile</a>
-            <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a></h3>
+            <h3><a href="{% url 'mood_journal:edit_profile' %}" class="btn btn-info btn-sm">Edit Profile</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Log Out</a></h3>
           </div>
         </div>
 
         <div class="vibes div-title">
         </div>
         
-        {% comment %} <p>Lorem ipsum dolor sit ame.</p>
-        <ul class="nav nav-pills flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        </ul>
-        <hr class="d-sm-none"> {% endcomment %}
       </div>
       <div class="col-sm-8">
           <h2 class="graph-title">📈 Mood Chart</h2>
