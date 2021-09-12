@@ -8,12 +8,11 @@
 {% if user.is_authenticated %}
 
   <div class="jumbotron text-center" style="margin-bottom:0px">
-    <small>Welcome to </small>
+    <small><b>Welcome to </b></small>
     <h1><b>Moodie</b></h1>
     <hr class="colored hidden-xs hidden-height-670">
-    <h4>Track your mood and get anonymous support!</h4>
+    <h4 style="font-family: Georgia, serif;"><i>Track your mood and get anonymous support!</i></h4>
 
-    <a class="nav-link" href="{% url 'mood_journal:mood_new' %}"> ADD NEW MOOD</a>
     <!-- <p>Resize this responsive page to see the effect!</p>  -->
   </div>
 
@@ -25,7 +24,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'mood_journal:mood_new' %}">New Mood</a>
+            <a class="nav-link btn btn-outline-success btn-lg" style="font-family:Lobster;" href="{% url 'mood_journal:mood_new' %}"> Let's get Moodie! </a>
         </li>
       </ul>
     </div>  
@@ -96,7 +95,7 @@
       data: {
         labels: {{ labels|safe }},
         datasets: [{
-          label: "Happiness",
+          label: "😁 HAPPINESS",
           lineTension: 0.3,
           backgroundColor: "rgba(78, 115, 223, 0.05)",
           borderColor: "rgba(78, 115, 223, 1)",

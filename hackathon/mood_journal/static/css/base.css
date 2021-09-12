@@ -36,7 +36,7 @@ hr {
   border: 1px solid grey;
 }
 
-.graph-title {
+.graph-title, .nav-item {
   font-family: 'Lobster';
 }
 
