@@ -11,6 +11,8 @@ import json
 # Create your views here.
 
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
     current_profile = request.user.profile
     moods = Mood.objects.filter(user=current_profile).order_by('-timestamp')
     moods_r = Mood.objects.filter(user=current_profile).order_by('timestamp')
@@ -28,16 +30,40 @@ def home(request):
 
 from .forms import ProfileUpdateForm
 def edit_profile(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    current_profile = request.user.profile
+    context = {}
+
     if request.method == 'POST':
-        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user)
         if p_form.is_valid():
             p_form.save()
+            current_profile.name = request.POST.get("name")
+            current_profile.bio = request.POST.get("bio")
+            current_profile.save()
             messages.success(request,'Your Profile has been updated!')
             return redirect('mood_journal:home')
-    else:
-        p_form = ProfileUpdateForm(instance=request.user)
+        else:
+            p_form = ProfileUpdateForm(
+                initial = {
+                    "name": current_profile.name,
+                    "bio": current_profile.bio
+                }
+            )
+    
+        context['p_form'] = p_form
 
-    context={'p_form': p_form}
+    else:
+        p_form = ProfileUpdateForm(
+            initial = {
+                "name": current_profile.name,
+                "bio": current_profile.bio
+            }
+        )
+    
+    context['p_form'] = p_form
 
     return render(request, 'registration/edit_profile.html',context)
 
