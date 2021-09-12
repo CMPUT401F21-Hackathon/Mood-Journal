@@ -5,8 +5,10 @@
 </style>
 </head>
 
-<body style="margin: 50px; background-color: lightgray;">
+<body style="margin: 50px; background-color: lightgray; margin-left: 200px; margin-right: 200px;">
     {% extends 'home.html' %}
+
+    {% load static %}
 
     {% block title %}Edit Profile{% endblock %}
     
@@ -32,10 +34,19 @@
                     <br><br>
                   <div class="row">
                     <div class="col-12 col-sm-auto mb-3">
-                      <div class="mx-auto" style="width: 140px;">
+                      <div class="mx-auto" style="width: 150px;">
+                        <!--
                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
                           <span style="color: rgb(121, 163, 204); font: bold 8pt Arial;">140x140</span>
+                          <div class="profile-picture">
+                            <img src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="130" height="130"/>
+                          </div>
                         </div>
+                        -->
+
+                        <div class="profile-picture">
+                            <img src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="150" height="150"/>
+                          </div>
                       </div>
                     </div>
                     <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
@@ -63,8 +74,8 @@
                             <div class="row">
                               <div class="col">
                                 <div class="form-group">
-                                  <label>Full Name</label>
-                                  <input class="form-control" type="text" name="name" value="{{profile.name}}">
+                                  <label>Name</label>
+                                  <input class="form-control" type="text" name="name" maxlength="100" value="{{profile.name}}">
                                 </div>
                               </div>
                               <div class="col">
@@ -78,8 +89,8 @@
                             <div class="row">
                               <div class="col mb-3">
                                 <div class="form-group">
-                                  <label>About</label>
-                                  <textarea class="form-control" name="bio" rows="5" placeholder="My Bio">{{profile.bio}}</textarea>
+                                  <label>Bio</label>
+                                  <textarea class="form-control" name="bio" rows="5" maxlength="100" placeholder="My Bio">{{profile.bio}}</textarea>
                                 </div>
                               </div>
                             </div>
