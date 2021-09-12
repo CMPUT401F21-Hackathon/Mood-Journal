@@ -1,19 +1,27 @@
 body { 
     background-color: white;
-  }
+    
+}
   
-h1 {
-    color: red;
+small {
+  font-size: 20px;
+}
+.jumbotron h1 {
+    color: orange;
+    font-size: 80px;
+}
+
+.jumbotron {
+  background-image: url(../img/bg3.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
+  size: 60%;
+  height: 400px;
 }
 
 .mood-box {
   border: 1.5px solid grey;
   border-radius: 8px;
   background-image: linear-gradient(to right, white, rgba(250, 248, 132));
-  margin: 3px;
-  padding: 3px;
 }
 
-.mood-box p {
-  margin: 0px;
-}
