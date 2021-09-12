@@ -16,6 +16,7 @@ def home(request):
     current_profile = request.user.profile
     moods = Mood.objects.filter(user=current_profile).order_by('-timestamp')
     moods_r = Mood.objects.filter(user=current_profile).order_by('timestamp')
+    mood_latest = moods[0]
     labels = []
     data = []
     last_music = Mood.objects.filter(user=current_profile, recommendation='Music').order_by('-timestamp')[0]
@@ -28,6 +29,7 @@ def home(request):
         'moods': moods,
         'labels': labels,
         'data': data,
+        'mood_latest': mood_latest,
     }
     return render(request, 'mood_journal/home.html', context)
 
