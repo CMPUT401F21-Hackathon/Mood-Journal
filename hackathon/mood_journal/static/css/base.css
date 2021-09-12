@@ -1,10 +1,19 @@
 body { 
-    background-color: white;
-    
+    background-color: #f8edeb;
+    /* background-image: url(../img/chill1.jpg); */
+    /* background-size: cover;*/
 }
   
+
 small {
   font-size: 20px;
+}
+h4 {
+  color:lightcorall
+}
+hr {
+  width:50%;
+
 }
 .jumbotron h1 {
     color: orange;
@@ -22,6 +31,28 @@ small {
 .mood-box {
   border: 1.5px solid grey;
   border-radius: 8px;
-  background-image: linear-gradient(to right, white, rgba(250, 248, 132));
+  background-image: linear-gradient(to right, white, rgb(204, 229, 255));
+  padding-left: 5%;
+  font: 1.2em "Fira Sans", serif;
 }
 
+
+.col-sm-4 {
+  background-color: white;
+}
+
+.profile-picture {
+  margin: auto;
+  width: 45%;
+  padding: 10px;
+}
+.username {
+  margin: auto;
+  width: 45%;
+  padding: 10px;
+}
+
+.aboutme {
+  font-family: cursive;
+  margin: auto;
+}
