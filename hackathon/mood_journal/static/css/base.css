@@ -1,10 +1,17 @@
 body { 
     background-color: whitesmoke;
-    
 }
   
+
 small {
   font-size: 20px;
+}
+h4 {
+  color:lightcorall
+}
+hr {
+  width:50%;
+
 }
 .jumbotron h1 {
     color: CornflowerBlue;

@@ -1,16 +1,112 @@
-{% extends 'home.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
 
-{% block title %}Edit Profile{% endblock %}
+<body style="margin: 50px; background-color: lightgray;">
+    {% extends 'home.html' %}
 
-{% block content %}
+    {% block title %}Edit Profile{% endblock %}
+    
+    {% block content %}
+    
+    <!--
+    <h1>Edit Profile</h1>
+    
+    <form method='POST' enctype="multipart/form-data">
+        {%csrf_token%}
+        {{ p_form.as_p}}
+        <button type='submit'>Update Profile</button>
+    </form>
+    -->
+    
+      <div class="col">
+        <div class="row">
+          <div class="col mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="e-profile">
+                    <h1 style="text-align: center; color: royalblue;"> Edit Profile </h1>
+                    <br><br>
+                  <div class="row">
+                    <div class="col-12 col-sm-auto mb-3">
+                      <div class="mx-auto" style="width: 140px;">
+                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                          <span style="color: rgb(121, 163, 204); font: bold 8pt Arial;">140x140</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                      <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{profile.name}}</h4>
+                        <p class="mb-0">@{{profile.user}}</p>
+                        <div class="mt-2">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fa fa-fw fa-camera"></i>
+                            <span>Change Photo</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                  </ul>
+                  <div class="tab-content pt-3">
+                    <div class="tab-pane active">
+                      <form method='POST' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col">
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Full Name</label>
+                                  <input class="form-control" type="text" name="name" value="{{profile.name}}">
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-group">
+                                  <label>Username</label>
+                                  <p name="username"> @{{profile.user}} </p> 
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col mb-3">
+                                <div class="form-group">
+                                  <label>About</label>
+                                  <textarea class="form-control" name="bio" rows="5" placeholder="My Bio">{{profile.bio}}</textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button type="cancel" class="btn btn-secondary">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                      </form>
+    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% endblock %}
 
-<h1>Edit Profile</h1>
-
-<form method='POST' enctype="multipart/form-data">
-    {%csrf_token%}
-    {{ p_form.as_p}}
-    <button type='submit'>Update Profile</button>
-</form>
-{% endblock %}
-
+</body>
+</html>
 
