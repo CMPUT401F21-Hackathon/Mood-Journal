@@ -71,6 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hackathon.wsgi.application'
+SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
 
 
 # Database

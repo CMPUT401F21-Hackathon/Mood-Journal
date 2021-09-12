@@ -9,13 +9,12 @@
     <h2 id="newMood">New Mood</h2>
     <div>
         <form method="POST" class="post-form">{% csrf_token %}
-            <p>Score:</p>
             {% if score_slider %}
-            <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" value={{score_slider}} id="score_slider">
+            <p>Mood Score:   <input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" value={{score_slider}} id="score_slider">
             <output>{{score_slider}}</output>
             </p>
             {% else %}
-            <p><input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" id="score_slider">
+            <p>Mood Score:   <input type="range" name="range" min="0" max="100" oninput="this.nextElementSibling.value = this.value" id="score_slider">
             <output>50</output>
             </p>
             {% endif %}
