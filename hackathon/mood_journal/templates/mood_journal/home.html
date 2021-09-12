@@ -68,10 +68,13 @@
         {% for mood in moods %}
         {% if mood.score > 50 %}
         <div class="mood-box div-tile mood-box-happy">
-          <h3><strong><a href="/mood/{{mood.id}}/">😁  {{mood.status}}</a></strong></h3>
+          <!-- <h3><strong><a href="/mood/{{mood.id}}/">😁  {{mood.status}}</a></strong></h3> -->
+          <h3><strong>😁 {{mood.status}}   <a href="/mood/{{mood.id}}/" style="font-size: 15px;"> Edit Mood</a></strong></h3>
+          
         {% else %}
         <div class="mood-box div-tile mood-box-sad">
-          <h3><strong><a href="/mood/{{mood.id}}/">😞  {{mood.status}}</a></strong></h3>
+          <h3><strong>😞 {{mood.status}}   <a href="/mood/{{mood.id}}/" style="font-size: 15px;"> Edit Mood</a></strong></h3>
+          <!-- <h3><strong><a href="/mood/{{mood.id}}/">😞  {{mood.status}}</a></strong></h3> -->
         {% endif %}
           <small>Date: {{mood.timestamp}}</small>
           <p>Score: {{mood.score}}</p>
