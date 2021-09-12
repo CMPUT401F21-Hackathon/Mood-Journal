@@ -15,8 +15,9 @@
 {% if user.is_authenticated %}
 
   <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Welcome to FANCY-GROUP-NAME</h1>
-    <p>Resize this responsive page to see the effect!</p> 
+    <small>Welcome to </small>
+    <h1>Moodie</h1>
+    <!-- <p>Resize this responsive page to see the effect!</p>  -->
   </div>
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
@@ -43,7 +44,7 @@
         </div>
 
         <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        <h3>Some Links</h3>
+        <h3><p><a href="{% url 'mood_journal:edit_profile' %}">Edit Profile</a></p></h3>
         <p>Lorem ipsum dolor sit ame.</p>
         <ul class="nav nav-pills flex-column">
           <li class="nav-item">
@@ -176,6 +177,7 @@
 </script>
 
   <br></br>
+  
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>

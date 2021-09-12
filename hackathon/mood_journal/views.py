@@ -1,14 +1,18 @@
+from django.shortcuts import render
 from .models import Mood
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import MoodForm
-from .models import Mood, Profile
+from .forms import MoodForm, ProfileUpdateForm
 from .recomendations import music, movie, recipe
+from django.contrib import messages
 import json
 import random
+
 
 # Create your views here.
 
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
     current_profile = request.user.profile
     moods = Mood.objects.filter(user=current_profile).order_by('-timestamp')
     moods_r = Mood.objects.filter(user=current_profile).order_by('timestamp')
@@ -23,6 +27,44 @@ def home(request):
         'data': data,
     }
     return render(request, 'mood_journal/home.html', context)
+
+def edit_profile(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+
+    current_profile = request.user.profile
+    context = {}
+
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user)
+        if p_form.is_valid():
+            p_form.save()
+            current_profile.name = request.POST.get("name")
+            current_profile.bio = request.POST.get("bio")
+            current_profile.save()
+            messages.success(request,'Your Profile has been updated!')
+            return redirect('mood_journal:home')
+        else:
+            p_form = ProfileUpdateForm(
+                initial = {
+                    "name": current_profile.name,
+                    "bio": current_profile.bio
+                }
+            )
+    
+        context['p_form'] = p_form
+
+    else:
+        p_form = ProfileUpdateForm(
+            initial = {
+                "name": current_profile.name,
+                "bio": current_profile.bio
+            }
+        )
+    
+    context['p_form'] = p_form
+
+    return render(request, 'registration/edit_profile.html',context)
 
 def mood_new(request):
     if request.method == "POST":
