@@ -119,22 +119,7 @@
   
   editPic()
 
-  function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-            	disableImageOverlay()
-            	var image = e.target.result
-            	var imageField = document.getElementById('id_profile_image_display')
-                imageField.src = image
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-  function editPic(){
+  function editPic(input){
 
     const realImageFile = document.getElementById("id_real_image");
 
@@ -163,18 +148,20 @@
     });
 
     realImageFile.addEventListener("change", function(){
-      const choosedFile = this.files[0];
-      if (choosedFile) {
-        const reader = new FileReader();
-        reader.addEventListener("load", function(){
-          profileImage.setAttribute("src", reader.result);
-        });
-        reader.readAsDataURL(choosedFile);
-      }
+    const choosedFile = this.files[0];
+    if (choosedFile) {
+      const reader = new FileReader();
+      reader.addEventListener("load", function(){
+        profileImage.setAttribute("src", reader.result);
+      });
+      reader.readAsDataURL(choosedFile);
+    }
     });
   }
   
 </script>
+
+
 
   <br></br>
   
