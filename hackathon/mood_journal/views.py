@@ -33,7 +33,7 @@ def edit_profile(request):
         return redirect("login")
 
     current_profile = request.user.profile
-    context = {}
+    context = {"profile": current_profile}
 
     if request.method == 'POST':
         p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user)
@@ -44,6 +44,7 @@ def edit_profile(request):
             current_profile.save()
             messages.success(request,'Your Profile has been updated!')
             return redirect('mood_journal:home')
+            '''        
         else:
             p_form = ProfileUpdateForm(
                 initial = {
@@ -63,7 +64,8 @@ def edit_profile(request):
         )
     
     context['p_form'] = p_form
-
+    print(p_form.fields["name"])
+'''
     return render(request, 'registration/edit_profile.html',context)
 
 def mood_new(request):
