@@ -1,5 +1,5 @@
 body { 
-    background-color: white;
+    background-color: whitesmoke;
     
 }
   
@@ -13,11 +13,8 @@ small {
 }
 
 .jumbotron {
-  background: linear-gradient(90deg, rgba(208,208,219,1) 1%, rgba(207,161,222,0.798739564185049) 44%, rgba(0,212,255,0.38137261740633754) 89%);
-  background-size: cover;
-  background-attachment: fixed;
-  size: 60%;
-  height: 300px;
+  background: linear-gradient(90deg, rgba(208, 208, 219, 0.712) 1%, rgba(207, 161, 222, 0.603) 44%, rgba(0, 213, 255, 0.24) 89%);
+  height: 250px;
 }
 
 .div-tile {
@@ -27,11 +24,31 @@ small {
 }
 
 .mood-box {
+  padding: 24px !important;
   border-radius: 8px;
-  background-color: rgba(255, 250, 240, 0.3);
   border: 1px solid grey;
-  border-color: SandyBrown;
-  box-shadow: 0 0 5px SandyBrown;
+}
+
+.graph-title {
+  font-family: 'Lobster';
+}
+
+h3 a:link {
+  font-family: 'Lobster';
+  color: SlateGray !important;
+  text-decoration: none;
+}
+
+.mood-box-happy {
+  background-color: rgba(255, 250, 240, 0.637);
+  border-color: PeachPuff;
+  box-shadow: 0 0 5px PeachPuff;
+}
+
+.mood-box-sad {
+  background-color: AliceBlue;
+  border-color: rgba(135, 206, 250, 0.308);
+  box-shadow: 0 0 5px LightSkyBlue;
 }
 
 .mood-box p {
@@ -39,7 +56,7 @@ small {
   padding: 0;
 }
 
-hr{
-  padding-bottom: 3px;
-  margin: 0px;    
+
+.mood-box small {
+  font-size: 12px;
 }
