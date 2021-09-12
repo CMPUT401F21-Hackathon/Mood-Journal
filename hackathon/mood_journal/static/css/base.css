@@ -1,7 +1,5 @@
 body { 
-    background-color: #f8edeb;
-    /* background-image: url(../img/chill1.jpg); */
-    /* background-size: cover;*/
+    background-color: whitesmoke;
 }
   
 
@@ -16,43 +14,65 @@ hr {
 
 }
 .jumbotron h1 {
-    color: orange;
-    font-size: 80px;
+    color: CornflowerBlue;
+    font-size: 60px;
+    font-family: 'Lobster';
 }
 
 .jumbotron {
-  background-image: url(../img/bg3.jpeg);
-  background-size: cover;
-  background-attachment: fixed;
-  size: 60%;
-  height: 400px;
+  background: linear-gradient(90deg, rgba(208, 208, 219, 0.712) 1%, rgba(207, 161, 222, 0.603) 44%, rgba(0, 213, 255, 0.24) 89%);
+  height: 250px;
+}
+
+.div-tile {
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .mood-box {
-  border: 1.5px solid grey;
-  border-radius: 8px;
-  background-image: linear-gradient(to right, white, rgb(204, 229, 255));
-  padding-left: 5%;
-  font: 1.2em "Fira Sans", serif;
+  padding: 16px !important;
+  border-radius: 16px;
+  border: 1px solid grey;
+}
+
+.graph-title {
+  font-family: 'Lobster';
+}
+
+h3 a:link {
+  font-family: 'Lobster';
+  color: SlateGray !important;
+  text-decoration: none;
+}
+
+.mood-box-happy {
+  background-color: rgba(255, 250, 240, 0.637);
+  border-color: PeachPuff;
+  box-shadow: 0 0 5px PeachPuff;
+}
+
+.mood-box-sad {
+  background-color: AliceBlue;
+  border-color: rgba(135, 206, 250, 0.308);
+  box-shadow: 0 0 5px LightSkyBlue;
+}
+
+.mood-box p {
+  margin: 0;
+  padding: 0;
 }
 
 
-.col-sm-4 {
-  background-color: white;
+.mood-box small {
+  font-size: 12px;
 }
 
-.profile-picture {
-  margin: auto;
-  width: 45%;
-  padding: 10px;
-}
-.username {
-  margin: auto;
-  width: 45%;
-  padding: 10px;
+
+.profile {
+  padding: 16px;
 }
 
-.aboutme {
-  font-family: cursive;
-  margin: auto;
+.chart-area {
+  padding: 24px;
 }
