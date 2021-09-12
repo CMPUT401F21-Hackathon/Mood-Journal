@@ -11,7 +11,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField(max_length=100, blank=True)
-    bio = models.TextField(max_length=100, blank=True)
+    bio = models.TextField(max_length=200, blank=True)
 
 class Mood(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
