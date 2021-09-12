@@ -125,10 +125,13 @@ LOGOUT_REDIRECT_URL = '/'
 STATIC_URL = '/static/'
 SITE_ROOT = os.path.normpath(os.path.dirname(__file__))
 STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, '..', 'static'),
 )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
