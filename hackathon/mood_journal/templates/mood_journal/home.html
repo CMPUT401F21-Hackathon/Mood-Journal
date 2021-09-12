@@ -37,10 +37,15 @@
         <div class="profile-picture">
           <img src="{% static 'img/generic_profile_picture.PNG' %}" alt="Profile Picture" width="130" height="130"/>
         </div>
+        
         <h2 class="username">{{user.username}}</h2>
         <p class="aboutme">Some text about me in culpa qui officia deserunt mollit anim..</p>
         <br>
         <h3 class="link">Some Links</h3>
+
+      
+        <h3><p><a href="{% url 'mood_journal:edit_profile' %}">Edit Profile</a></p></h3>
+
         <p>Lorem ipsum dolor sit ame.</p>
         <ul class="nav nav-pills flex-column">
           <li class="nav-item">
@@ -111,6 +116,7 @@
   </script>
 
   <br></br>
+  
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>
