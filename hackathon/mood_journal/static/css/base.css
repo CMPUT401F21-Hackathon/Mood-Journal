@@ -22,6 +22,7 @@ hr {
 .jumbotron {
   background: linear-gradient(90deg, rgba(208, 208, 219, 0.712) 1%, rgba(207, 161, 222, 0.603) 44%, rgba(0, 213, 255, 0.24) 89%);
   height: 400px;
+  padding-top: 120px;
 }
 
 .div-tile {
