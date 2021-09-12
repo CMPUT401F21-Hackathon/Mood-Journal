@@ -18,14 +18,14 @@ small {
 }
 
 .div-tile {
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 8px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .mood-box {
-  padding: 24px !important;
-  border-radius: 8px;
+  padding: 16px !important;
+  border-radius: 16px;
   border: 1px solid grey;
 }
 
@@ -59,4 +59,13 @@ h3 a:link {
 
 .mood-box small {
   font-size: 12px;
+}
+
+
+.profile {
+  padding: 16px;
+}
+
+.chart-area {
+  padding: 24px;
 }
