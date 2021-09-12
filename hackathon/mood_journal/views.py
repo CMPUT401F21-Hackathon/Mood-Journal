@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Mood
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import MoodForm, ProfileUpdateForm
-from .recomendations import music, movie, recipe
+from .recomendations import music, movie, recipe, music_video
 from django.contrib import messages
 import json
 import random
@@ -19,10 +19,13 @@ def home(request):
     mood_latest = moods[0]
     labels = []
     data = []
+    last_music = Mood.objects.filter(user=current_profile, recommendation='Music').order_by('-timestamp')[0]
+    video = music_video.get(str(last_music.link_title))
     for mood in moods_r:
         labels.append(mood.timestamp.strftime("%m/%d, %H:%M"))
         data.append(mood.score)
     context = {
+        'video': video,
         'moods': moods,
         'labels': labels,
         'data': data,

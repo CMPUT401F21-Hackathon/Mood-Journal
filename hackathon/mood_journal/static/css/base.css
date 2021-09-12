@@ -31,6 +31,17 @@ hr {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
+.music-title{
+  font-family: 'Lobster';
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+.vibes-div-title{
+  width: 400px;
+  height: 225px;
+  padding-right: 100px;
+  
+}
 .mood-box {
   padding: 16px !important;
   border-radius: 16px;
