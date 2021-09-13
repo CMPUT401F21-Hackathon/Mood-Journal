@@ -1,7 +1,10 @@
 # Mood Journal
 Mood Journal &amp; Vibes
 
-![alt text](https://github.com/CMPUT401F21-Hackathon/Mood-Journal/blob/main/docs/front_page.PNG)
+![alt text](https://github.com/CMPUT401F21-Hackathon/Mood-Journal/blob/main/docs/UI.png)
+
+### Quick Video Demo:
+https://github.com/CMPUT401F21-Hackathon/Mood-Journal/blob/main/docs/UI.png
 
 
 # Instructions
